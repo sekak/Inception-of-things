@@ -20,11 +20,13 @@ Vagrant.configure(2) do |config|
                 v.customize ["modifyvm", :id, "--name", node[:hostname]]
             end
 
-            # if node[:type] == "server"
-            #     cfg.vm.provision "shell", path: "scripts/install_k3s_server.sh"
-            # else
-            #     cfg.vm.provision "shell", path: "scripts/install_k3s_agent.sh"
-            # end
+            cfg.vm.provision "shell", inline: "ethtool -K enp0s8 tx off rx off gso off gro off tso off", run: "always"
+
+            if node[:type] == "server"
+                cfg.vm.provision "shell", path: "scripts/install_k3s_server.sh"
+            else
+                cfg.vm.provision "shell", path: "scripts/install_k3s_agent.sh"
+            end
         end
     end
 end
