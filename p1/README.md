@@ -22,3 +22,11 @@
 | Setting | Why |
 |---|---|
 | `ethtool -K enp0s8 tx off rx off gso off gro off tso off` (with `run: "always"`) | Fixes a network offloading bug that was hanging the TLS handshake between the two VMs on the private interface |
+
+# Ressources
+
+https://blog.stephane-robert.info/docs/infra-as-code/provisionnement/vagrant/
+
+https://www.youtube.com/watch?v=5hmsWOmI2kY
+
+https://docs.k3s.io/quick-start
