@@ -38,3 +38,12 @@ QEMU sert à émuler et exécuter les machines virtuelles. Avec KVM, QEMU peut f
    ↓
 skkS   Ready
 skkSW  Ready
+
+
+
+
+
+2:
+L'utilisateur envoie une requête vers l'IP de la VM avec un Host comme app2.com. L'Ingress Controller reçoit la requête et applique les règles définies dans l'Ingress pour trouver le bon Service. Le Service utilise son selector pour trouver les pods qui ont les labels correspondants. Kubernetes maintient les adresses de ces pods dans des EndpointSlices, puis la requête est envoyée vers un des pods disponibles. Le Deployment définit combien de replicas doivent exister et Kubernetes recrée un pod si nécessaire.
+
+Kubernetes, crée-moi un Deployment appelé app1. Je veux 1 replica. Les pods de ce Deployment doivent avoir le label app=app1. Dans chaque pod, crée un container appelé app1 basé sur l’image nginx:alpine, qui écoute sur le port 80.
