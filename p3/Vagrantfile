@@ -1,5 +1,5 @@
 SERVER_NODE_IP = "192.168.56.110"
-MEM = "4096"
+MEM = "2048"
 CPUS = "2"
 BOX = "bento/debian-12"
 SERVER_NAME = "asekkakS"
