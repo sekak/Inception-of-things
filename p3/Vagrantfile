@@ -1,0 +1,25 @@
+SERVER_NODE_IP = "192.168.56.110"
+MEM = "2048"
+CPUS = "2"
+BOX = "bento/debian-12"
+SERVER_NAME = "asekkakS"
+
+Vagrant.configure("2") do |config|
+  config.vm.box = BOX
+	config.vm.box_check_update = false
+  config.ssh.forward_agent = true
+
+  config.vm.define SERVER_NAME do |server|
+    server.vm.hostname = SERVER_NAME
+    server.vm.network "private_network", ip: SERVER_NODE_IP
+    server.vm.provider "virtualbox" do |vb|
+      vb.memory = MEM
+      vb.cpus = CPUS
+      vb.name = SERVER_NAME
+    end
+    server.vm.synced_folder ".", "/vagrant", type: "virtualbox"  
+
+    server.vm.provision "shell", path: "./scripts/install.sh"
+  end
+
+end
